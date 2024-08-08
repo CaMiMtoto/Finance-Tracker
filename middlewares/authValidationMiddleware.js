@@ -1,4 +1,4 @@
-// middlewares/validationMiddleware.js
+// middlewares/authValidationMiddleware.js
 const { body, validationResult } = require('express-validator');
 
 // Validation rules for user registration
