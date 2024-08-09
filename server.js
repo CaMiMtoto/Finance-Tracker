@@ -5,6 +5,11 @@ const cors = require('cors');
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/authRoutes');
 const transactionRoutes = require('./routes/transactionRoutes');
+const budgetRoutes = require('./routes/budgetRoutes');
+const insightsRoutes = require('./routes/insightsRoutes');
+
+
+
 dotenv.config();
 connectDB().then(r => console.log("Connected to DB"));
 
@@ -15,6 +20,8 @@ app.use(express.json());
 
 app.use('/api/auth', authRoutes);
 app.use('/api/transactions', transactionRoutes);
+app.use('/api/budgets', budgetRoutes);
+app.use('/api/insights', insightsRoutes);
 
 const PORT = process.env.PORT || 3000;
 
