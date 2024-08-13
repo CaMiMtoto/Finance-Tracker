@@ -60,4 +60,21 @@ const loginUser = async (req, res) => {
     }
 };
 
-module.exports = {registerUser, loginUser};
+const getUserData = async (req, res) => {
+    try {
+        const userId = req.user?.id;
+        if (!userId) return res.status(401).json({ message: 'Unauthorized' });
+
+        const user = await User.findById(userId);
+        if (!user) return res.status(404).json({ message: 'User not found' });
+
+        res.json({ name: user.name, email: user.email }); // Adjust the response as needed
+    } catch (error) {
+        res.status(500).json({ message: 'Error fetching user data' });
+    }
+};
+
+
+
+
+module.exports = {registerUser, loginUser,getUserData};
